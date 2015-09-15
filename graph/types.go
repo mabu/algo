@@ -15,3 +15,9 @@ type Sized interface {
 	// Size is the number of nodes in the graph.
 	Size() int
 }
+
+// AdjList is a graph represented as an adjacency list. Implements Sized.
+type AdjList [][]int
+
+func (l AdjList) Adjacent(v int) []int { return l[v] }
+func (l AdjList) Size() int            { return len(l) }

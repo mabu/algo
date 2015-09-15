@@ -3,20 +3,14 @@ package bfs
 import (
 	"reflect"
 	"testing"
+
+	"github.com/mabu/algo/graph"
 )
 
 type unsized [][]int
 
 func (g unsized) Adjacent(v int) []int {
 	return g[v]
-}
-
-type sized struct {
-	unsized
-}
-
-func (g sized) Size() int {
-	return len(g.unsized)
 }
 
 func TestPath(t *testing.T) {
@@ -80,7 +74,7 @@ func TestPath(t *testing.T) {
 		if got := Path(unsized(tc.g), tc.from, tc.to); !reflect.DeepEqual(got, tc.want) {
 			t.Errorf("Unsized Path(%v, %d, %d) = %v, want %v", tc.g, tc.from, tc.to, got, tc.want)
 		}
-		if got := Path(sized{tc.g}, tc.from, tc.to); !reflect.DeepEqual(got, tc.want) {
+		if got := Path(graph.AdjList(tc.g), tc.from, tc.to); !reflect.DeepEqual(got, tc.want) {
 			t.Errorf("Sized Path(%v, %d, %d) = %v, want %v", tc.g, tc.from, tc.to, got, tc.want)
 		}
 	}
