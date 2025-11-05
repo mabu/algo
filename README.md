@@ -1,4 +1,6 @@
 algo
 ====
 
-This is a repository where I throw hopefully reusable algorithms.
+My playground for algorithms and data structures in Go.
+
+https://pkg.go.dev/github.com/mabu/algo
